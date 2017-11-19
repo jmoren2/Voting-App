@@ -2,32 +2,22 @@
 
 var express = require('express');
 var db = require('sequelize-connect');
-var server = express();
-var port = 8080;
 var path = require('path');
-
-
-
-
+var bodyParser = require('body-parser');
+var pollController = require('./controllers/pollController');
+var voteController = require('./controllers/voteController');
+var errorHandler = require('./Middleware/errors');
+var chalk = require('chalk');
 
 async function connect () {
     db.discover = path.join(__dirname, 'models');
     db.matcher = function shouldImportModel(modelFileName) {
         return true;
     };
-    await db.connect('voting_schema', 'root', '');
-    /*var orm = new db(
-        'voting_schema',
-        'root',
-        '',
-        {
-            host: 'localhost',
-            dialect: "mysql",
-            port:    3306
-        },
-        db.discover,
-        db.matcher
-    )*/
+    await db.connect('voting_schema', 'root', '',{
+        force:false
+    });
+
 }
 
 (async function () {
@@ -37,11 +27,20 @@ async function connect () {
     }
     catch (err)
     {
-        console.log('An error occurred when connecting: ' + err);
+        console.log(chalk.red('An error occurred when connecting: ' + err));
     }
+
+    var server = express();
+    var port = 8080;
+    server.use(bodyParser.json());
+    server.post('/api/poll', pollController.handlePost);
+    server.get('/api/poll/:pollId', pollController.handleGet);
+    server.post('/api/vote/', voteController.handlePost);
     server.get('*', function (req,res) {
         res.send("hello");
     });
+
+    server.use(errorHandler);
 
     server.listen(process.env.PORT || port, function () {
         console.log("\nRunning on port.." + port);

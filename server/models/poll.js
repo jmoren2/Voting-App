@@ -12,7 +12,7 @@ module.exports = function createPollModel (sequelize, DataTypes) {
                 poll.hasMany(models.pollOption)
             }
         }
-    })
+    });
 
     return poll
-}
+};
