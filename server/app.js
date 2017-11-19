@@ -4,27 +4,36 @@ var express = require('express');
 var db = require('sequelize-connect');
 var server = express();
 var port = 8080;
+var path = require('path');
 
 
 
-var discover = [__dirname + '/models', ...];
 
 
-
-async function connect() {
-
-    var orm = await new Connection(
-        'Voting-Schema',
+async function connect () {
+    db.discover = path.join(__dirname, 'models');
+    db.matcher = function shouldImportModel(modelFileName) {
+        return true;
+    };
+    await db.connect('voting_schema', 'root', '');
+    /*var orm = new db(
+        'voting_schema',
         'root',
         '',
-       discover,
-    )
+        {
+            host: 'localhost',
+            dialect: "mysql",
+            port:    3306
+        },
+        db.discover,
+        db.matcher
+    )*/
 }
 
 (async function () {
     try{
     await connect();
-
+    console.log('Connection Successful');
     }
     catch (err)
     {
@@ -37,6 +46,7 @@ async function connect() {
     server.listen(process.env.PORT || port, function () {
         console.log("\nRunning on port.." + port);
     });
+
 })();
 
 
