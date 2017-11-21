@@ -1,7 +1,6 @@
-var path = require('path');
-var webpack = require('webpack');
-var htmlWebpack = require('html-webpack-plugin');
-
+var path = require('path')
+var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -10,30 +9,25 @@ module.exports = {
         path.join(__dirname, 'client/Router.jsx')
     ],
     output: {
-        path: path.join(__dirname + '/dist/'),
-        file: 'index.js',
+        path: path.join(__dirname, '/dist/'),
+        filename: 'main.js',
         publicPath: '/'
     },
     plugins: [
-        new htmlWebpack ({
+        new HtmlWebpackPlugin({
             template: 'client/index.tpl.html',
             inject: 'body',
-            filename: 'index.html',
+            filename: 'index.html'
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
     module: {
-        loader: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    'presets': ['react', 'es2015']
-                }
-            }
-        ]
+        loaders: [{
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel'
+        }]
     }
-};
+}

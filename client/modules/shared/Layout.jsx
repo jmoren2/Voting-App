@@ -1,15 +1,15 @@
-var React = require('react');
+import React from 'react'
 
-class Layout extends React.component{
-    render(){
-        var content = this.props.chilren;
+
+class Layout extends React.Component {
+    render () {
+        const content = this.props.children
         return (
-            <div className="container">
-                <h2>Layout</h2>
+            <div>
                 {content}
             </div>
         )
     }
 }
 
-module.exports = Layout;
+module.exports = Layout

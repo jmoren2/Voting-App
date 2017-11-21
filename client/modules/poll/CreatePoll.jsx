@@ -1,9 +1,10 @@
-var React = require('react');
+import React from 'react'
 
-class CreatePoll extends React.component{
-    render(){
+
+class CreatePoll extends React.Component {
+    render () {
         return (
-            <div className"container">
+            <div className='container'>
                 <h2>CreatePoll</h2>
             </div>
         )

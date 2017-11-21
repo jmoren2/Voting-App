@@ -56,9 +56,7 @@ async function connect () {
     server.post('/api/poll', pollController.handlePost);
     server.get('/api/poll/:pollId', pollController.handleGet);
     server.post('/api/vote/', voteController.handlePost);
-    server.get('*', function (req,res) {
-        res.send("hello");
-    });
+
 
     server.use(middleware);
     server.use(webpackHotMiddleware(compiler));

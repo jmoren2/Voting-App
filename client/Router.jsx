@@ -1,20 +1,20 @@
-var React = require('react');
-var {render} = require('react-dom');
-var { Router, Route, IndexRoute, browserHistory } = require('react-router');
+const React = require('react');
+const {render} = require('react-dom');
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 
-var Layout = require('./modules/shared/Layout');
-var CreatePoll = require('./modules/poll/CreatePoll');
+import Layout from './modules/shared/Layout.jsx'
+import CreatePoll from './modules/poll/CreatePoll.jsx'
 
-/*const rootRoute = (
+const rootRoute = (
     <Router history={browserHistory}>
         <Route path='/' component={Layout}>
             <IndexRoute component={CreatePoll} />
         </Route>
     </Router>
-);*/
+);
 
 render(
-    //rootRoute,
+    rootRoute,
     document.getElementById('app')
 );
