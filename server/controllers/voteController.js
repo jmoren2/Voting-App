@@ -7,7 +7,7 @@ const voteController = {};
 
 voteController.handlePost = async function (req, res, next) {
     try{
-        throw 'foo bar';
+
         const foundVote = await db.models.vote.findOne({
             where:{
                 voterIp:req.ip,
@@ -23,7 +23,7 @@ voteController.handlePost = async function (req, res, next) {
                 voterIp: req.ip,
                 pollOptionId: req.body.pollOptionId
             });
-            res.send(201);
+            res.sendStatus(201);
 
         }
         else
