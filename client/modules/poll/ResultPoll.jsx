@@ -12,7 +12,7 @@ class ResultPoll extends React.Component {
 
         this.state = {
             question: null,
-            pollOptions: null,
+            pollOptions: [],
             loading: true,
             error:false
         }
@@ -68,7 +68,9 @@ class ResultPoll extends React.Component {
                                     </div>
                                 )
                             }) : null}
-                            {!error ? <Link to={`/v/${pollId}`}>Place vote on this poll!</Link> : null}
+                            {
+                                <Link to={`/vote/${pollId}`}>Place vote on this poll!</Link>
+                            }
                         </div>
                     </div>
                 </div>
