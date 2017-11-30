@@ -69,8 +69,9 @@ class VotePoll extends React.Component {
         const {alert} = window;
         const {pollId} = this.props.params;
 
-        if (!this.state.optionIDChecked)
-            alert('Select option before voting!')
+        if (!this.state.optionIDChecked) {
+            return alert('Select option before voting!');
+        }
         const data = {
             pollOptionId: this.state.optionIDChecked
         };

@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 
 import Layout from './modules/shared/Layout.jsx'
+import Error from './modules/shared/Error.jsx'
 import CreatePoll from './modules/poll/CreatePoll.jsx'
 import VotePoll from './modules/poll/VotePoll.jsx'
 import ResultPoll from './modules/poll/ResultPoll.jsx'
@@ -14,6 +15,7 @@ var rootRoute = (
             <IndexRoute component={CreatePoll} />
             <Route path='vote/:pollId' component={VotePoll}/>
             <Route path='result/:pollId' component={ResultPoll}/>
+            <Route path='*' component={Error}/>
         </Route>
     </Router>
 );
