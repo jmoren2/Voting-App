@@ -7,14 +7,13 @@ var bodyParser = require('body-parser');
 var pollController = require('./controllers/pollController');
 var voteController = require('./controllers/voteController');
 var errorHandler = require('./Middleware/errors');
-var chalk = require('chalk');
 var webpack = require('webpack');
 var webpackMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var config = require('../webpack.config');
 
 
-const compiler = webpack(config);
+var compiler = webpack(config);
 
 const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
@@ -47,7 +46,7 @@ async function connect () {
     }
     catch (err)
     {
-        console.log(chalk.red('An error occurred when connecting: ' + err));
+        console.log('An error occurred when connecting: ' + err);
     }
 
     var server = express();
@@ -56,10 +55,11 @@ async function connect () {
     server.post('/api/poll', pollController.handlePost);
     server.get('/api/poll/:pollId', pollController.handleGet);
     server.post('/api/vote/', voteController.handlePost);
-
+    server.get('/api/polls', pollController.handleAllPolls);
 
     server.use(middleware);
     server.use(webpackHotMiddleware(compiler));
+
     server.get('*', function response (req, res) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, '../dist/index.html')));
         res.end();

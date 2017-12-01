@@ -21,7 +21,7 @@ class CreatePoll extends React.Component {
                     <div className='panel panel-default col-sm-6 col-sm-offset-3'>
                         <div className='panel-body'>
                             <h2 className='text-center'>Create Poll</h2>
-                            <form onSubmit={this.createPoll}>
+                            <form onSubmit={this.createPoll.bind(this)}>
                                 <div className='form-group'>
                                     <label>Question: </label>
                                     <input placeholder='Enter a Question!' className='form-control' ref='question' /> <br />
@@ -29,7 +29,7 @@ class CreatePoll extends React.Component {
                                 {options}
                                 <div className='row'>
                                     <div className='col-sm-4 col-sm-offset-4'>
-                                        <button className='btn btn-block btn-primary center-block' type='submit'>Create Poll</button>
+                                        <button className='btn btn-block btn-danger center-block' type='submit'>Create Poll</button>
                                     </div>
                                 </div>
                             </form>
@@ -41,7 +41,7 @@ class CreatePoll extends React.Component {
     }
 
     createOptions (){
-        const { optionCount } = this.state
+        const { optionCount } = this.state;
 
         var options = [];
 
@@ -90,7 +90,7 @@ class CreatePoll extends React.Component {
     {
         event.preventDefault();
 
-        var { question } = this.refs;
+        var { question } = this.refs
         var { alert } = window;
 
         var data = {
@@ -136,13 +136,13 @@ class CreatePoll extends React.Component {
     {
         var { question, options} = data;
 
-        if(question.length < 8)
+        if(question.length === 0)
         {
-            return 'Question must be more than 8';
+            return 'Please enter a question';
         }
         if(options.length < 2)
         {
-            return 'need more options'
+            return 'Please enter more options'
         }
         return false;
     }

@@ -3,7 +3,6 @@ import jQurey from 'jquery'
 import {Link} from 'react-router';
 import {Pie} from 'react-chartjs'
 import Color from 'color'
-import { getRandomPastelColor } from './../../utl.js'
 
 class ResultPoll extends React.Component {
     constructor(props)
@@ -37,7 +36,11 @@ class ResultPoll extends React.Component {
 
     render () {
         const chartData = this.state.pollOptions.map((pollOption) => {
-            const color = getRandomPastelColor();
+
+            //got this color function from https://stackoverflow.com/questions/1484506/random-color-generator#comment65671856_1484514
+
+            const color = "#"+((1<<24)*Math.random()|0).toString(16);
+
             return {
                 value: pollOption.voteCount,
                 label: pollOption.text,

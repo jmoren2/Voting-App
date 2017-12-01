@@ -13,7 +13,7 @@ pollController.handlePost= function (req, res, next) {
             return;
       }
 
-      if (req.body.options.length > 5) {
+      if (req.body.options.length > 50) {
           res.status(400).json({
               message: 'Too many poll options'
           });
@@ -40,35 +40,44 @@ pollController.handlePost= function (req, res, next) {
 };
 
 pollController.handleGet = async function (req, res, next) {
-  try{
-      const foundPoll = await db.models.poll.findOne({
-          where: {
-              id: req.params.pollId
-          },
-          group: ['pollOptions.id'],
-          order: [[db.sequelize.literal('`pollOptions.voteCount`'), 'ASC']],
-          attributes: ['question'],
-          include: {
-              model: db.models.pollOption,
-              attributes: [
-                  ['id', 'optionId'],
-                  'text',
-                  [db.sequelize.fn('COUNT', db.sequelize.col('pollOptions.votes.id')), 'voteCount']
-              ],
-              include: {
-                  model: db.models.vote,
-                  attributes: []
-              }
-          }
-      });
+    try {
+        const foundPoll = await db.models.poll.findOne({
+            where: {
+                id: req.params.pollId
+            },
+            group: ['pollOptions.id'],
+            order: [[db.sequelize.literal('`pollOptions.voteCount`'), 'ASC']],
+            attributes: ['question'],
+            include: {
+                model: db.models.pollOption,
+                attributes: [
+                    ['id', 'optionId'],
+                    'text',
+                    [db.sequelize.fn('COUNT', db.sequelize.col('pollOptions.votes.id')), 'voteCount']
+                ],
+                include: {
+                    model: db.models.vote,
+                    attributes: []
+                }
+            }
+        });
 
-      res.status(200).json(foundPoll.dataValues);
+        res.status(200).json(foundPoll.dataValues);
 
-  } catch(err)
-  {
-      next(err);
-  }
+    } catch (err) {
+        next(err);
+    }
 };
+
+pollController.handleAllPolls = async (req, res, next)=> {
+        try {
+            const allPolls = await db.models.poll.findAll();
+            res.status(200).json(allPolls);
+        } catch (err) {
+            next(err);
+        }
+    };
+
 
 module.exports = pollController;
 

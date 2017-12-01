@@ -43,6 +43,7 @@
     "react-dom": "^15.6.2",
     "react-router": "^2.8.1",
     "sequelize": "^3.22.0",
-    "sequelize-connect": "^1.2.2"
+    "sequelize-connect": "^1.2.2",
+    "whatwg-fetch": "^2.0.3"
   }
 }
