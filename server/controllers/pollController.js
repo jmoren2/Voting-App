@@ -26,7 +26,7 @@ pollController.handlePost= function (req, res, next) {
       })
       const pollOptions = req.body.options.map(option => {
           return {
-              text: option,
+              option: option,
               pollId: createdPoll.dataValues.id
           }
       })
@@ -52,7 +52,7 @@ pollController.handleGet = async function (req, res, next) {
                 model: db.models.pollOption,
                 attributes: [
                     ['id', 'optionId'],
-                    'text',
+                    'option',
                     [db.sequelize.fn('COUNT', db.sequelize.col('pollOptions.votes.id')), 'voteCount']
                 ],
                 include: {

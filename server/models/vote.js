@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function createVoteModel (sequelize, DataTypes) {
-    const vote = sequelize.define('vote', {
+    var vote = sequelize.define('vote', {
     }, {
         timestamps: false,
         classMethods: {

@@ -15,7 +15,15 @@ var config = require('../webpack.config');
 
 var compiler = webpack(config);
 
-const middleware = webpackMiddleware(compiler, {
+
+/*****************************************
+    For this project i followed this following tutorials
+        https://youtu.be/9kJVYpOqcVU
+        https://youtu.be/M7g76xnRxmA
+        https://youtu.be/nL2wpZV1LYc
+*****************************************/
+
+var middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
     contentBase: 'src',
     stats: {

@@ -43,7 +43,7 @@ class ResultPoll extends React.Component {
 
             return {
                 value: pollOption.voteCount,
-                label: pollOption.text,
+                label: pollOption.option,
                 color: color,
                 highlight: Color(color).lighten(0.05).hexString()
             }
@@ -58,8 +58,9 @@ class ResultPoll extends React.Component {
             <div className='container'>
                 <div className='row'>
                     <div className='panel panel-default col-sm-offset-3 col-sm-6'>
-                        <h2 className='text-center'>Poll Results</h2>
+                        <h2 className='text-center' style={{color: 'red'}}>Poll Results</h2>
                         <div className='panel-body text-center'>
+                            <h4 style={{fontSize: 18}} className='text-center'>QUESTION: </h4>
                             <h3>{question}</h3>
                             <Pie className='center-block' style={{marginTop: 16, marginBottom: 16}} data={chartData} width='300' height='220' />
                             {!loading ? pollOptions.map((option, i) => {
