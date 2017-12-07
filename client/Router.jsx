@@ -11,6 +11,22 @@ import VotePoll from './modules/poll/VotePoll.jsx'
 import ResultPoll from './modules/poll/ResultPoll.jsx'
 import AllPoll from './modules/poll/AllPoll.jsx'
 
+/*
+
+For this project i followed this following tutorials
+        webpack: https: youtu.be/9kJVYpOqcVU
+        express backend: https://youtu.be/M7g76xnRxmA
+        React frontend: https://youtu.be/nL2wpZV1LYc
+        Sequelize: https://youtu.be/qsDvJrGMSUY
+
+ */
+
+/*
+This file is a standard implementation in React but followed this tutorial
+
+https://youtu.be/nL2wpZV1LYc
+
+ */
 var rootRoute = (
     <Router history={browserHistory}>
         <Route path='/' component={Layout}>
@@ -25,5 +41,5 @@ var rootRoute = (
 
 render(
     rootRoute,
-    document.getElementById('app')
+    document.getElementById('voting-app')
 );

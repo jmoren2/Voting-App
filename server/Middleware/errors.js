@@ -1,14 +1,20 @@
 'use strict';
-var chalk = require('chalk');
-module.exports = function (err, req, res, next) {
+
+/*
+Followed this tutorial to learn the backend and implement it
+
+https://youtu.be/M7g76xnRxmA
+
+Followed this series of tutorials to better understand sequelize
+
+https://youtu.be/qsDvJrGMSUY
+ */
+
+module.exports = function (err, req, res) {
     if (err) {
         res.status(500).json({
             message: 'An internal server error occured'
         });
-        console.log(
-            chalk.red('An internal server error occurred: ' + err)
-        )
-    } else {
-        next()
+        console.log('An internal server error occurred: ' + err);
     }
 };

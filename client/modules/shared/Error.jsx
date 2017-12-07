@@ -1,6 +1,13 @@
 import React from 'react'
 import Link from 'react-router'
 
+/*
+Followed this tutorial for the implementation but styled by me
+
+https://youtu.be/nL2wpZV1LYc
+
+ */
+
 class Error extends React.Component {
     render () {
         return (

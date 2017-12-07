@@ -4,6 +4,17 @@ import {Link} from 'react-router';
 import {Pie} from 'react-chartjs'
 import Color from 'color'
 
+
+
+/*
+Followed this tutorial to learn react and implement it
+
+https://youtu.be/nL2wpZV1LYc
+
+Styling of the website and chart was done by me
+ */
+
+
 class ResultPoll extends React.Component {
     constructor(props)
     {
@@ -35,17 +46,17 @@ class ResultPoll extends React.Component {
     }
 
     render () {
-        const chartData = this.state.pollOptions.map((pollOption) => {
+        var data = this.state.pollOptions.map((options) => {
 
             //got this color function from https://stackoverflow.com/questions/1484506/random-color-generator#comment65671856_1484514
 
-            const color = "#"+((1<<24)*Math.random()|0).toString(16);
+            var chartColor = "#"+((1<<24)*Math.random()|0).toString(16);
 
             return {
-                value: pollOption.voteCount,
-                label: pollOption.text,
-                color: color,
-                highlight: Color(color).lighten(0.05).hexString()
+                value: options.voteCount,
+                color: chartColor,
+                highlight: Color(chartColor).lighten(0.1).hexString(),
+                label: options.option,
             }
         });
 
@@ -60,9 +71,9 @@ class ResultPoll extends React.Component {
                     <div className='panel panel-default col-sm-offset-3 col-sm-6'>
                         <h2 className='text-center'>Poll Results</h2>
                         <div className='panel-body text-center'>
-                            <h4 style={{fontSize: 18}} className='text-center'>QUESTION: </h4>
-                            <h2>{question}</h2>
-                            <Pie className='center-block' style={{marginTop: 16, marginBottom: 16}} data={chartData} width='400' height='320' />
+                            <h3 style={{fontSize: 20}} className='text-center'>QUESTION: </h3>
+                            <h3>{question}</h3>
+                            <Pie className='center-block' style={{marginTop: 16, marginBottom: 16}} data={data} width='400' height='320' />
                             {!loading ? pollOptions.map((option, i) => {
                                 const { text, voteCount } = option;
                                 return (

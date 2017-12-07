@@ -4,12 +4,12 @@ import ListAllPolls from './ListAllPolls.jsx'
 
 /*
 
-This was implemented by Me.
+This file was all implemented by me was implemented by Me once i better understood react.
  */
 
 class AllPoll extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             polls: null,
             loading: true
@@ -20,11 +20,11 @@ class AllPoll extends Component {
         fetch(`/api/polls`)
             .then((response) => {
                 if(response.status === 200){
-                    console.log(response.status)
+                    console.log("Everything is good");
                     return response.json();
                 }
                 else
-                    throw "Server response wasn’t OK";
+                    console.log("Something went wrong with the server");
             })
             .then((response) => {
                 console.log(response);
@@ -42,7 +42,7 @@ class AllPoll extends Component {
     render() {
         var { loading } = this.state;
         if(loading)  {
-            return <div>...loading</div>;
+            return <div>Component state is loading. </div>;
         }  else {
             var {polls} = this.state;
             return (

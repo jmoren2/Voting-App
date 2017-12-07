@@ -2,6 +2,14 @@ import React from 'react'
 import $ from 'jquery'
 import {Link, browserHistory} from 'react-router';
 
+
+/*
+Followed this tutorial to learn react and implement it
+
+https://youtu.be/nL2wpZV1LYc
+
+ */
+
 class VotePoll extends React.Component {
     constructor(props) {
         super(props);

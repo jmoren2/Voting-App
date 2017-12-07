@@ -18,9 +18,10 @@ var compiler = webpack(config);
 
 /*****************************************
     For this project i followed this following tutorials
-        https://youtu.be/9kJVYpOqcVU
-        https://youtu.be/M7g76xnRxmA
-        https://youtu.be/nL2wpZV1LYc
+        webpack: https: youtu.be/9kJVYpOqcVU
+        express backend: https://youtu.be/M7g76xnRxmA
+        React frontend: https://youtu.be/nL2wpZV1LYc
+        Sequelize: https://youtu.be/qsDvJrGMSUY
 *****************************************/
 
 var middleware = webpackMiddleware(compiler, {
@@ -63,7 +64,9 @@ async function connect () {
     server.post('/api/poll', pollController.handlePost);
     server.get('/api/poll/:pollId', pollController.handleGet);
     server.post('/api/vote/', voteController.handlePost);
-    server.get('/api/polls', pollController.handleAllPolls);
+
+    //This was implemented my me once i understood react react and backend better
+    server.get('/api/polls', pollController.handleGetAll);
 
     server.use(middleware);
     server.use(webpackHotMiddleware(compiler));

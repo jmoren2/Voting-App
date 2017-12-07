@@ -2,6 +2,12 @@ import React from 'react'
 var $ = require('jquery');
 import {browserHistory} from 'react-router'
 
+/*
+Followed this tutorial to learn react and implement it
+
+https://youtu.be/nL2wpZV1LYc
+ */
+
 
 class CreatePoll extends React.Component {
     constructor(props)

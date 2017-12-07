@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 /*
 
-This was all implemented by me
+This file was all implemented by me was implemented by Me once i better understood react.
 
  */
 

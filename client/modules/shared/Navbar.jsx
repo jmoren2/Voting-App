@@ -1,7 +1,12 @@
 import React from 'react'
 
+/*
+This file is a standard implementation in React but got idea from this post
+and was implemented by me
 
-// this was all implemented by me
+https://stackoverflow.com/questions/34607841/react-router-nav-bar-example
+
+ */
 
 class Navbar extends React.Component {
     render () {
