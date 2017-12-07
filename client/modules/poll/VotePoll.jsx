@@ -45,13 +45,13 @@ class VotePoll extends React.Component {
                             <h2 className='text-center' style={{marginTop: 0}}>{question}</h2>
                             <form onSubmit={this.placeAvote.bind(this)}>
                                 {!loading ? pollOptions.map((pollOption, i) => {
-                                    var { optionId, text } = pollOption;
+                                    var { optionId, option} = pollOption;
                                     return (
                                         <div key={i} className='radio text-center well well-sm' style={{margin: 12}}>
                                             <label style={{fontSize: 24}}>
                                             <p>Option:</p>
                                             <input type="radio" name='option' value={optionId} style={{marginTop: 10}} onClick={this.checkedOption.bind(this, optionId)}/>
-                                            {text}
+                                            {option}
                                             </label>
                                         </div>
                                     )
