@@ -39,7 +39,7 @@ class VotePoll extends React.Component {
             <div className='container'>
                 <div className='row'>
                     <div className='panel panel-default col-sm-offset-3 col-sm-6' style={{marginBottom: 4}}>
-                        <h2 className='text-center'>VOTE!</h2>
+                        <h2 className='text-center'>Place your vote!</h2>
                         <div className='panel-body'>
                             <h4 style={{fontSize: 18}} className='text-center'>QUESTION: </h4>
                             <h2 className='text-center' style={{marginTop: 0}}>{question}</h2>

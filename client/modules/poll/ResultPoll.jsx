@@ -60,8 +60,9 @@ class ResultPoll extends React.Component {
                     <div className='panel panel-default col-sm-offset-3 col-sm-6'>
                         <h2 className='text-center'>Poll Results</h2>
                         <div className='panel-body text-center'>
-                            <h3>{question}</h3>
-                            <Pie className='center-block' style={{marginTop: 16, marginBottom: 16}} data={chartData} width='300' height='220' />
+                            <h4 style={{fontSize: 18}} className='text-center'>QUESTION: </h4>
+                            <h2>{question}</h2>
+                            <Pie className='center-block' style={{marginTop: 16, marginBottom: 16}} data={chartData} width='400' height='320' />
                             {!loading ? pollOptions.map((option, i) => {
                                 const { text, voteCount } = option;
                                 return (
