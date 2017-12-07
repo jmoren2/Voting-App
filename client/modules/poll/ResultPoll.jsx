@@ -1,7 +1,7 @@
 import React from 'react'
 import jQurey from 'jquery'
 import {Link} from 'react-router';
-import {Pie} from 'react-chartjs'
+import {Doughnut} from 'react-chartjs'
 import Color from 'color'
 
 
@@ -73,7 +73,7 @@ class ResultPoll extends React.Component {
                         <div className='panel-body text-center'>
                             <h3 style={{fontSize: 20}} className='text-center'>QUESTION: </h3>
                             <h3>{question}</h3>
-                            <Pie className='center-block' style={{marginTop: 16, marginBottom: 16}} data={data} width='400' height='320' />
+                            <Doughnut className='center-block' style={{marginTop: 15, marginBottom: 15}} data={data} width='400' height='320' />
                             {!loading ? pollOptions.map((option, i) => {
                                 const { text, voteCount } = option;
                                 return (
