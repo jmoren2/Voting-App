@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function createPollOptionModel (sequelize, DataTypes) {
-    const pollOption = sequelize.define('pollOption', {
-        text: {
+    var pollOption = sequelize.define('pollOption', {
+        option: {
             type: DataTypes.STRING,
             allowNull: false
         }

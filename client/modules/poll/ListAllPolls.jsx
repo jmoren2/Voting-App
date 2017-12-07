@@ -22,9 +22,9 @@ class ListAllPolls extends Component {
         return (
             <div className="container">
                 <div className='row'>
-                    <div className='panel panel-default col-sm-offset-3 col-sm-6'>
+                    <div className='panel panel-default col-sm-offset-3 col-md-6'>
                         <div className='panel-body text-center'>
-                            <h1>Questions</h1>
+                            <h1 style={{color: 'red'}}>All Polls</h1>
                             {allPolls}
                         </div>
                     </div>

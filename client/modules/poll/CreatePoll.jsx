@@ -20,7 +20,7 @@ class CreatePoll extends React.Component {
                 <div className='row'>
                     <div className='panel panel-default col-sm-6 col-sm-offset-3'>
                         <div className='panel-body'>
-                            <h2 className='text-center'>Create Poll</h2>
+                            <h2 className='text-center' style={{color:'red'}}>Create a new Poll!</h2>
                             <form onSubmit={this.createPoll.bind(this)}>
                                 <div className='form-group'>
                                     <label>Question: </label>
