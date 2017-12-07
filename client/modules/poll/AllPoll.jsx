@@ -15,7 +15,12 @@ class AllPoll extends Component {
             loading: true
         }
     }
+/*
+Followed this website to get polls
 
+https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
+
+ */
     componentDidMount(){
         fetch(`/api/polls`)
             .then((response) => {
