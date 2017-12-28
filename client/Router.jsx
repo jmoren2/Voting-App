@@ -27,6 +27,7 @@ This file is a standard implementation in React but followed this tutorial
 https://youtu.be/nL2wpZV1LYc
 
  */
+
 var rootRoute = (
     <Router history={browserHistory}>
         <Route path='/' component={Layout}>
